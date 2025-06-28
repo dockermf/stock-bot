@@ -1,4 +1,5 @@
 import sys
+import os
 import ctypes
 import gc
 import asyncio
@@ -10,10 +11,17 @@ import psutil
 
 
 # Telegram
+<<<<<<< HEAD
 bot_token = "***REMOVED***"
 
 users = ["trickymf", "tommy_nalichkareal"]
 group_id = ***REMOVED***
+=======
+bot_token = os.getenv("TELEGRAM_TOKEN")
+group_id = os.getenv("TELEGRAM_GROUP_ID")
+
+users = ["trickymf", "tommy_nalichkareal"]
+>>>>>>> 2559992 (Import os)
 
 channel_ids = {
 	#"honey":1376526834774052966, # honey
