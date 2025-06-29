@@ -30,6 +30,7 @@ channel_ids = {
 	"weather":1387356915796938846, # weather
 	"egg":1387356895957745714, # egg
 	"stock":1387356877826031736, # stocks
+	"summer":1387356978921214022, # summer stock
 	"cosmetics":None
 }
 
@@ -151,6 +152,17 @@ class discord_client(discord.Client):
 		#"Honey Torch":"",
 		#"Bee Chair":"",
 		#"Honey Walkway":""
+
+		# Summer event
+		"EVENT":"\U00002600", # \U00002600 => ☀️
+		"Summer Seed Pack":"\u2757",
+		"Delphinium":"",
+		"Lily of the Valley":"\u2757",
+		"Traveler's Fruit":"\u2757",
+		"Mutation Spray Burnt":"",
+		"Oasis Crate":"",
+		"Oasis Egg":"\u2757",
+		"Hamster":"\u2757"
 		
 		#"COSMETICS":"\U00002728" # \U00002728 => ✨
 	}
@@ -346,7 +358,7 @@ async def parse_message(message):
 					is_worthy = False
 					
 					for line in field.value.split("\n"):
-						count = line.split()[-1]
+						amount = line.split()[-1]
 						
 						if "<:" in line:
 							name = " ".join(line.split()[1:-1])
@@ -355,7 +367,7 @@ async def parse_message(message):
 						
 						if prefs[name] != "":
 							is_worthy = True
-							items[name] = count
+							items[name] = amount
 					
 					if is_worthy:
 						text += f"{prefs[type]} **{type} STOCK** {prefs[type]}" + "\n"
