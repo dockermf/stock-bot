@@ -10,6 +10,8 @@ from datetime import datetime
 import psutil
 
 
+__version__ = "1.0.0"
+
 # Telegram
 <<<<<<< HEAD
 bot_token = "***REMOVED***"
