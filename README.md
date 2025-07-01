@@ -6,7 +6,7 @@ This is my first personal project I've been working on to learn new stuff, so I 
 ## OS
 Linux
 ## Libraries used
-Listed in requirements.txt
+Listed in [requirements.txt](requirements.txt)
 ## Required python version
 \>= 3.8
 <= 3.11
