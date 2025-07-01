@@ -6,7 +6,7 @@ Linux
 ## Libraries used
 Listed in requirements.txt
 ## Required python version
->= 3.8
+\>= 3.8
 <= 3.11
 # Setup
 It was designed to be deployed via a hosting service, but you can host it on your machine too.
@@ -28,6 +28,6 @@ Or, if you like, you can install them manually.
 ### 3. Start the bot
 Run in your terminal:
 ```python
-python3 main.py
+$ python3 main.py
 ```
 ***Note: if you close your terminal, the bot will stop working as it's tied to the terminal session it was started in.***
