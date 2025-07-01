@@ -13,17 +13,10 @@ import psutil
 __version__ = "1.2.0"
 
 # Telegram
-<<<<<<< HEAD
-bot_token = "***REMOVED***"
-
-users = ["trickymf", "tommy_nalichkareal"]
-group_id = ***REMOVED***
-=======
 bot_token = os.getenv("TELEGRAM_TOKEN")
 group_id = os.getenv("TELEGRAM_GROUP_ID")
 
 users = ["trickymf", "tommy_nalichkareal"]
->>>>>>> 2559992 (Import os)
 
 channel_ids = {
 	#"honey":1376526834774052966, # honey shop
@@ -37,7 +30,7 @@ channel_ids = {
 bot = Bot(token=bot_token)
 
 # Discord
-discord_token = "***REMOVED***"
+discord_token = os.getenv("DISCORD_TOKEN")
 
 
 class memory_controller():
