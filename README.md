@@ -29,6 +29,7 @@ $ pip install -r requirements.txt
 Or, if you like, you can install them manually.
 ### 3. Prepare bots/group
 Create a .env file, then copy/paste a template provided in [.env.example](.env.example) file. Those are gonna be used by the code.
+
 *Discord*:
 For all this to work, you'll have to get a real discord account's token (might be your alt, since it's against discord's ToS to self-bot). To get it, watch a youtube tutorial or ask an AI.
 After you got the token, paste it into .env file.
@@ -36,6 +37,7 @@ After you got the token, paste it into .env file.
 *Telegram*:
 First of all, create your bot and get it's token. Ask an AI if you don't know how.
 After that, create a group in which you have to add your bot and then make sure the bot has all permissions required for sending messages. Then, get the group's chat id, and paste it into your .env file. You can now turn group's notifications off.
+
 *IMPORTANT*
 Change users variable in [main.py](main.py) file to include your group's member usernames, as the bot uses it to ping you whenever something good is on stock. Will be fixed later.
 ### 4. Start the bot
