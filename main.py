@@ -10,7 +10,7 @@ from datetime import datetime
 import psutil
 
 
-__version__ = "1.1.0"
+__version__ = "1.2.0"
 
 # Telegram
 <<<<<<< HEAD
@@ -26,11 +26,11 @@ users = ["trickymf", "tommy_nalichkareal"]
 >>>>>>> 2559992 (Import os)
 
 channel_ids = {
-	#"honey":1376526834774052966, # honey
-	"weather":1387356915796938846, # weather
-	"egg":1387356895957745714, # egg
-	"stock":1387356877826031736, # stocks
-	"summer":1387356978921214022, # summer stock
+	#"honey":1376526834774052966, # honey shop
+	"weather":1387356915796938846,
+	"egg":1387356895957745714,
+	"stock":1387356877826031736, # regular stocks (gear/seed)
+	"summer":1387356978921214022, # summer event stock
 	"cosmetics":None
 }
 
@@ -40,8 +40,30 @@ bot = Bot(token=bot_token)
 discord_token = "***REMOVED***"
 
 
-class discord_client(discord.Client):
+class memory_controller():
+	def trim_memory(self):
+		libc = ctypes.CDLL("libc.so.6")
+		return libc.malloc_trim(0)
+
+	async def execute_trim(self):
+		loop = asyncio.get_event_loop()
+		await loop.run_in_executor(None, self.trim_memory)
+
+	async def get_ram(self):
+		ram = await asyncio.get_event_loop().run_in_executor(None, lambda: psutil.Process().memory_info().rss / 1024**2)
+		return ram
 	
+	async def ram_cleaner(self):
+		while True:
+			await asyncio.sleep(900)
+			# Clear unused vars and return reserved memory to linux.
+			gc.collect()
+			await self.execute_trim()
+			
+			await log(f"RAM: {await self.get_ram():.2f}Mb")
+			await log(f"Active threads: {threading.active_count()}")
+
+class discord_client(discord.Client):
 	def __init__(self):
 		super().__init__(
 			max_messages=5,
@@ -55,7 +77,6 @@ class discord_client(discord.Client):
 			"Snow",
 			"Windy"
 		],
-		
 		"all_events":[
 			"Rain",
 			"Snow",
@@ -72,7 +93,6 @@ class discord_client(discord.Client):
 			"Volcano",
 			"Chocolate"
 		],
-		
 		"SEEDS":"\U0001F331", # \U0001F331 => 🌱
 		"Carrot":"",
 		"Strawberry":"",
@@ -84,6 +104,7 @@ class discord_client(discord.Client):
 		"Blueberry":"",
 		"Pumpkin":"",
 		"Watermelon":"",
+		"Rafflesia":"",
 		"Green Apple":"\u2757",
 		"Avocado":"\u2757",
 		"Banana":"\u2757",
@@ -105,6 +126,7 @@ class discord_client(discord.Client):
 		"Cacao":"\u2757",
 		"Beanstalk":"\u2757",
 		"Ember Lily":"\u2757",
+		"Pitcher Plant":"\u2757",
 		"Sugar Apple":"\u2757",
 	
 		"GEAR":"\U0001F6E0", # \U0001F6E0 => 🛠
@@ -131,8 +153,10 @@ class discord_client(discord.Client):
 		"Legendary Egg":"\u2757",
 		"Mythical Egg":"\u2757",
 		"Paradise Egg":"\u2757",
+		"Bee Egg":"\u2757",
 		"Bug Egg":"\u2757",
 		
+		# Bizzy bee event
 		#"HONEY":"\U0001F36F", # \U0001F36F => honey pot emoji
 		#"Flower Seed Pack":"\u2757",
 		#"Honey Sprinkler":"\u2757",
@@ -153,7 +177,7 @@ class discord_client(discord.Client):
 		#"Bee Chair":"",
 		#"Honey Walkway":""
 
-		# Summer event
+		# Summer harvest event
 		"EVENT":"\U00002600", # \U00002600 => ☀️
 		"Summer Seed Pack":"\u2757",
 		"Delphinium":"",
@@ -167,53 +191,18 @@ class discord_client(discord.Client):
 		#"COSMETICS":"\U00002728" # \U00002728 => ✨
 	}
 	
-	def trim_memory(self):
-		libc = ctypes.CDLL("libc.so.6")
-		return libc.malloc_trim(0)
-
-
-	async def execute_trim(self):
-		loop = asyncio.get_event_loop()
-		await loop.run_in_executor(None, self.trim_memory)
-	
-
-	async def get_ram(self):
-		ram = await asyncio.get_event_loop().run_in_executor(None, lambda: psutil.Process().memory_info().rss / 1024**2)
-		return ram
-	
-
-	async def clear_discord_caches(self):
-		if hasattr(self._connection, "_messages"):
-			self._connection._messages.clear()
-		if hasattr(self._connection, "_guilds"):
-			self._connection._guilds.clear()
-	
-
-	async def ram_cleaner(self):
-		while True:
-			await asyncio.sleep(900)
-			# Clear unused vars and return memory to linux.
-			await self.clear_discord_caches()
-			gc.collect()
-			await self.execute_trim()
-			
-			await log(f"RAM: {await self.get_ram():.2f}Mb")
-			await log(f"Active threads: {threading.active_count()}")
-	
+	async def on_ready(self):
+		await log("on_ready(): started")
+		controller = memory_controller()
+		self.loop.create_task(controller.ram_cleaner())
 	
 	async def report(self, message):
 		channel = self.get_channel(1386397564282339398)
 		await channel.send(message)
-		
-	
-	async def on_ready(self):
-		await log("on_ready(): started")
-		self.loop.create_task(self.ram_cleaner())
-	
 	
 	async def on_message(self, message):
-		if message.author.name == "trickymf":
-			if isinstance(message.channel, discord.DMChannel):
+		if isinstance(message.channel, discord.DMChannel):
+			if message.author.name == "trickymf":
 				await change_prefs(message.content)
 		
 		if message.author.name == "Sapphire":
@@ -221,16 +210,14 @@ class discord_client(discord.Client):
 		
 		if message.channel.id in channel_ids.values():
 			content = await parse_message(message)
-			
 			if content != "":
 				for user in users:
 					content += f"@{user} "
-				
+
 				await log("on_message(): calling telegram_send()")
 				await telegram_send(content)
 
 discord_bot = discord_client()
-
 
 async def change_prefs(text):
 	if (len(text.split()) < 3) or (text.lower() in channel_ids):
@@ -263,7 +250,6 @@ async def change_prefs(text):
 					found = True
 					await discord_send(f"{event} -> on")
 					return
-			
 			if not found:
 				await discord_send(f"{event_input.lower()} is already enabled.")
 
@@ -278,7 +264,6 @@ async def change_prefs(text):
 					event_bans.append(event)
 					await discord_send(f"{event} -> off.")
 					return
-		
 		else:
 			await discord_send(f"{action} has to be on/off.")
 			return
@@ -287,7 +272,7 @@ async def change_prefs(text):
 		action = text.split()[-1]
 		item_input = " ".join(text.split()[1:-1])
 		prefs = discord_client.prefs
-		
+
 		for key in prefs:
 			if key.lower() == item_input.lower():
 				if action.lower() == "off":
@@ -298,7 +283,6 @@ async def change_prefs(text):
 					prefs[key] = ""
 					await discord_send(f"{key} -> off")
 					return
-				
 				elif action.lower() == "on":
 					if prefs[key] == "\u2757":
 						await discord_send(f"{key} is already enabled.")
@@ -307,7 +291,6 @@ async def change_prefs(text):
 					prefs[key] = "\u2757"
 					await discord_send(f"{key} -> on")
 					return
-				
 				else:
 					await discord_send(f"{action} has to be on/off")
 					return
@@ -318,24 +301,20 @@ async def change_prefs(text):
 	elif prefix == "channel":
 		id = text.split()[-1]
 		name_input = " ".join(text.split()[1:-1]).lower()
-		
+
 		if name_input in channel_ids:
 			await discord_send(f"Changing from {channel_ids[name_input]} to {id}")
 			channel_ids[name_input] = id
 		else:
 			await discord_send(f"{name_input} is not valid. Options: {[x for x in channel_ids]}")
-			
 	else:
 		await discord_send(f"Syntax for stocks: weather/stock <name> <on/off>\nSyntax for channel settings: channel <name> <id>")
 
-
 async def parse_message(message):
 	prefs = discord_client.prefs
-	
 	event_bans = prefs["event_bans"]
-	
 	text = ""
-	
+
 	if not message.embeds:
 		text += message.content + "\n"
 	else:
@@ -343,11 +322,9 @@ async def parse_message(message):
 			if embed.title:
 				event = embed.title
 				is_worthy = True
-				
 				for ban in event_bans:
 					if ban in event:
 						is_worthy = False
-				
 				if is_worthy:
 					text += event + "\n"
 			
@@ -358,13 +335,14 @@ async def parse_message(message):
 					is_worthy = False
 					
 					for line in field.value.split("\n"):
-						amount = line.split()[-1]
-						
+						# Detects if there is an emoji being used and removes it if needed.
 						if "<:" in line:
 							name = " ".join(line.split()[1:-1])
 						else:
 							name = " ".join(line.split()[:-1])
 						
+						amount = line.split()[-1]
+						# Check if the item is wanted by the user.
 						if prefs[name] != "":
 							is_worthy = True
 							items[name] = amount
@@ -377,10 +355,8 @@ async def parse_message(message):
 							text += f"• {prefs[item]}{item} — {items[item]}" + "\n"
 	return text
 
-
 async def get_time():
 	return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
 
 async def log(entry, level=0):
 	time = await get_time()
@@ -389,37 +365,27 @@ async def log(entry, level=0):
 	
 	await asyncio.to_thread(sys.stdout.write, log_entry)
 
-
 async def discord_send(message):
 	try:
-		await log("discord_send(): sending")
 		await discord_bot.report(message)
-		await log("discord_send(): finished")
-	
+		await log("discord_send(): sent")
 	except Exception as e:
 		await log(f"discord_send(): {e}", 1)
 
-
 async def telegram_send(text):
 	try:
+		# Send the following characters raw without triggering markdown to prevent errors.
 		reserved_chars = ["_", "[", "]", "(", ")", "~", "`", ">", "#", "+", "-", "=", "|", "{", "}", ".", "!"]
 		for char in reserved_chars:
 			text = text.replace(char, f"\\{char}")
-		
-		await log("telegram_send(): sending")
 		await bot.send_message(chat_id=group_id, text=text, parse_mode="MarkdownV2")
-		await log("telegram_send(): finished")
-	
+		await log("telegram_send(): sent")
 	except Exception as e:
 		await log(f"telegram_send(): {e}", 1)
 
-
 async def main():
-	
-	await asyncio.gather(
-		discord_bot.start(discord_token)
-	)
-
+	loop = asyncio.get_event_loop()
+	await loop.create_task(discord_bot.start(discord_token))
 
 if __name__ == "__main__":
 	asyncio.run(main())
