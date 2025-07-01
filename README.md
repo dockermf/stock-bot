@@ -27,7 +27,7 @@ $ pip install -r requirements.txt
 Or, if you like, you can install them manually.
 ### 3. Start the bot
 Run in your terminal:
-```python
+```bash
 $ python3 main.py
 ```
 ***Note: if you close your terminal, the bot will stop working as it's tied to the terminal session it was started in.***
