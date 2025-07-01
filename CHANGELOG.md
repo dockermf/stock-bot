@@ -10,3 +10,4 @@
 ### -Re-structured the bot's code to be (hopefully) more readable.
 ### -Removed parts where it cleared discord's cache as it wasn't the reason a memory leak was fixed.
 ### -Updated [README.md](README.md) to be more clear about everything.
+### -Removed a bunch of commits containing sensitive data, hopefully fixed all the issues after doing this.
