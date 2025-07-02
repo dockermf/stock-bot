@@ -8,8 +8,9 @@ from telegram import Bot
 import discord
 from datetime import datetime
 import psutil
+from dotenv import load_dotenv
 
-
+load_dotenv()
 __version__ = "1.2.0"
 
 # Telegram
