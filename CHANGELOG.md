@@ -13,4 +13,7 @@
 ### -Removed a bunch of commits containing sensitive data, hopefully fixed all the issues after doing this.
 
 ## 2025-07-02
-### -Fully got rid sensitive data
+### -Fully got rid of sensitive data.
+
+## 2025-07-03
+### -Added Dockerfile and .dockerignore files.
