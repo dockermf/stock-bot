@@ -1,0 +1,6 @@
+# Ignores everything except for the whitelisted items.
+
+*
+
+!main.py
+!requirements.txt
