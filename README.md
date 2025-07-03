@@ -11,8 +11,8 @@ Listed in [requirements.txt](requirements.txt)
 \>= 3.8
 <= 3.11
 # Setup
-It was designed to be deployed via a hosting service, but you can host it on your machine too.
-## Steps:
+It was designed to be deployed via a hosting service, but you can host it on your machine too, either using docker or running it via python.
+## For python follow the next steps:
 ### 1. Download
 Run in your terminal:
 ```bash
@@ -46,3 +46,13 @@ Run in your terminal:
 $ python3 main.py
 ```
 ***Note: if you close your terminal, the bot will stop working as it's tied to the terminal session it was started in.***
+## For docker:
+### 1. Download (the same as above).
+### 2. Build:
+```bash
+$ docker build -t <your container name> .
+```
+### 3. Run:
+```bash
+$ sudo docker run -e TELEGRAM_TOKEN=<YOUR_TOKEN> -e TELEGRAM_GROUP_ID=<YOUR_GROUP_ID> -e DISCORD_TOKEN=<YOUR_DISCORD_TOKEN> <your container>
+```
