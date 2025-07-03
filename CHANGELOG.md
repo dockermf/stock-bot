@@ -17,3 +17,4 @@
 
 ## 2025-07-03
 ### -Added Dockerfile and .dockerignore files.
+### -Updated [README.md](README.md) to include docker.
