@@ -1,7 +1,6 @@
 # Description
-Gets stock from [this](https://discord.gg/giftcard) discord server, then parses the contents, formats and re-sends it to your telegram group.
+Gets stock from any discord server that has [Vulcan](https://discordbotlist.com/bots/vulcan) bot, then parses the stocks, formats and re-sends it to your telegram group.
 
-This is my first personal project I've been working on to learn new stuff, so I don't expect it to work flawlessly on your machine, since there are possible bugs I might not be aware of.
 # Dependencies
 ## OS
 Linux
