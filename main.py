@@ -21,11 +21,12 @@ users = ["trickymf", "tommy_nalichkareal"]
 
 channel_ids = {
 	#"honey":1376526834774052966, # honey shop
-	"weather":1387356915796938846,
-	"egg":1387356895957745714,
-	"stock":1387356877826031736, # regular stocks (gear/seed)
-	"summer":1387356978921214022, # summer event stock
-	"cosmetics":None
+	#"weather":1387356915796938846,
+	#"egg":1387356895957745714,
+	#"stock":1387356877826031736, # regular stocks (gear/seed)
+	#"summer":1387356978921214022, # summer event stock
+	#"cosmetics":None
+    "gag-stock":1384416057162203156
 }
 
 bot = Bot(token=bot_token)
@@ -99,13 +100,13 @@ class discord_client(discord.Client):
 		"Pumpkin":"",
 		"Watermelon":"",
 		"Rafflesia":"",
-		"Green Apple":"\u2757",
-		"Avocado":"\u2757",
-		"Banana":"\u2757",
-		"Pineapple":"\u2757",
-		"Kiwi":"\u2757",
-		"Bell Pepper":"\u2757",
-		"Prickly Pear":"\u2757",
+		"Green Apple":"",
+		"Avocado":"",
+		"Banana":"",
+		"Pineapple":"",
+		"Kiwi":"",
+		"Bell Pepper":"",
+		"Prickly Pear":"",
 		"Feijoa":"\u2757",
 		"Loquat":"\u2757",
 		"Bamboo":"",
@@ -121,22 +122,28 @@ class discord_client(discord.Client):
 		"Beanstalk":"\u2757",
 		"Ember Lily":"\u2757",
 		"Pitcher Plant":"\u2757",
-		"Sugar Apple":"\u2757",
-	
+		"Sugar Apple":"\u2757",	
+        "Burning Bud":"\u2757",
+        "Giant Pinecone":"\u2757",
+		
 		"GEAR":"\U0001F6E0", # \U0001F6E0 => 🛠
 		"Trowel":"",
+        #"Lightning Rod":"\u2757",
 		"Watering Can":"",
+		"Recall Wrench":"",
 		"Basic Sprinkler":"",
 		"Advanced Sprinkler":"",
+        "Medium Toy":"\u2757",
+        "Medium Treat":"\u2757",
 		"Godly Sprinkler":"\u2757",
-		"Master Sprinkler":"\u2757",
+        "Magnifying Glass":"",
 		"Tanning Mirror":"\u2757",
-		"Recall Wrench":"",
-		"Lightning Rod":"\u2757",
+		"Master Sprinkler":"\u2757",
+        "Cleaning Spray":"",
 		"Favorite Tool":"",
 		"Harvest Tool":"",
 		"Friendship Pot":"\u2757",
-		"Cleaning Spray":"",
+        "Levelup Lollipop":"\u2757",
 	
 		"EGG":"\U0001F95A", # \U0001F95A => 🥚
 		"Common Egg":"",
@@ -172,15 +179,15 @@ class discord_client(discord.Client):
 		#"Honey Walkway":""
 
 		# Summer harvest event
-		"EVENT":"\U00002600", # \U00002600 => ☀️
-		"Summer Seed Pack":"\u2757",
-		"Delphinium":"",
-		"Lily of the Valley":"\u2757",
-		"Traveler's Fruit":"\u2757",
-		"Mutation Spray Burnt":"",
-		"Oasis Crate":"",
-		"Oasis Egg":"\u2757",
-		"Hamster":"\u2757"
+		#"EVENT":"\U00002600", # \U00002600 => ☀️
+		#"Summer Seed Pack":"\u2757",
+		#"Delphinium":"",
+		#"Lily of the Valley":"\u2757",
+		#"Traveler's Fruit":"\u2757",
+		#"Mutation Spray Burnt":"",
+		#"Oasis Crate":"",
+		#"Oasis Egg":"\u2757",
+		#"Hamster":"\u2757"
 		
 		#"COSMETICS":"\U00002728" # \U00002728 => ✨
 	}
