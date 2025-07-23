@@ -189,6 +189,20 @@ class discord_client(discord.Client):
 		#"Oasis Egg":"\u2757",
 		#"Hamster":"\u2757"
 		
+		"EVENT":"\U0000262F", # \U0000262F => ☯
+		"Zen Seed Pack":"\u2757",
+		"Zen Egg":"\u2757",
+		"Hot Spring":"",
+		"Zen Sand":"",
+		"Tranquil Radar":"",
+		"Zenflare":"",
+		"Zen Crate":"",
+		"Soft Sunshine":"",
+		"Koi":"\u2757",
+		"Zen Gnome Crate":"",
+		"Spiked Mango":"\u2757",
+		"Pet Shard Tranquil":"\u2757"
+
 		#"COSMETICS":"\U00002728" # \U00002728 => ✨
 	}
 	
