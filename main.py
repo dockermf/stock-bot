@@ -11,7 +11,7 @@ import psutil
 from dotenv import load_dotenv
 
 load_dotenv()
-__version__ = "1.2.0"
+__version__ = "1.3.0"
 
 # Telegram
 bot_token = os.getenv("TELEGRAM_TOKEN")
@@ -189,26 +189,11 @@ class discord_client(discord.Client):
 		#"Oasis Egg":"\u2757",
 		#"Hamster":"\u2757"
 		
-        # Zen event
-        "EVENT":"\u262F", # \u262F => ☯
-        "Zen Seed Pack":"",
-        "Zen Egg":"\u2757",
-		"Hot Spring":"",
-		"Zen Sand":"",
-		"Tranquil Radar":"",
-		"Zenflare":"",
-		"Zen Crate":"",
-		"Soft Sunshine":"",
-		"Koi":"\u2757",
-		"Zen Gnome Crate":"",
-		"Spiked Mango":"\u2757",
-		"Pet Shard Tranquil":"\u2757"
-		
 		#"COSMETICS":"\U00002728" # \U00002728 => ✨
 	}
 	
 	async def on_ready(self):
-		await log("on_ready(): started")
+		await log(f"on_ready(): started. v{__version__}")
 		controller = memory_controller()
 		self.loop.create_task(controller.ram_cleaner())
 	
