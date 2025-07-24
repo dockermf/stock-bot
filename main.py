@@ -11,7 +11,7 @@ import psutil
 from dotenv import load_dotenv
 
 load_dotenv()
-__version__ = "1.3.0"
+__version__ = "1.3.1"
 
 # Telegram
 bot_token = os.getenv("TELEGRAM_TOKEN")
@@ -69,12 +69,12 @@ class discord_client(discord.Client):
 	prefs = {
 		"event_bans":[
 			"Rain",
-			"Snow",
+			"Frost",
 			"Windy"
 		],
 		"all_events":[
 			"Rain",
-			"Snow",
+			"Frost",
 			"Windy",
 			"Thunder",
 			"Tornado",
@@ -86,7 +86,8 @@ class discord_client(discord.Client):
 			"Jandelstorm",
 			"Blackhole",
 			"Volcano",
-			"Chocolate"
+			"Chocolate",
+			"Aurora"
 		],
 		"SEEDS":"\U0001F331", # \U0001F331 => 🌱
 		"Carrot":"",
@@ -189,6 +190,7 @@ class discord_client(discord.Client):
 		#"Oasis Egg":"\u2757",
 		#"Hamster":"\u2757"
 		
+		# Zen event
 		"EVENT":"\U0000262F", # \U0000262F => ☯
 		"Zen Seed Pack":"\u2757",
 		"Zen Egg":"\u2757",
@@ -334,21 +336,23 @@ async def parse_message(message):
 		text += message.content + "\n"
 	else:
 		for embed in message.embeds:
-			if embed.title:
-				event = embed.title
+			if embed.description:
+				lines = embed.description.split("\n")
+				event = lines[0]
+				duration = lines[2]
 				is_worthy = True
 				for ban in event_bans:
 					if ban in event:
 						is_worthy = False
 				if is_worthy:
-					text += event + "\n"
+					text += event + "\n" + duration + "\n"
 			
 			if embed.fields:
 				for field in embed.fields:
 					type = field.name.strip("*").split()[0]
 					items = {}
 					is_worthy = False
-					
+
 					for line in field.value.split("\n"):
 						# Detects if there is an emoji being used and removes it if needed.
 						if "<:" in line:
@@ -375,7 +379,7 @@ async def get_time():
 
 async def log(entry, level=0):
 	time = await get_time()
-	severity = {0:"info", 1:"error"}
+	severity = {0:"info", 1:"error", 2:"debug"}
 	log_entry = f"[{severity[level]}] {time}: {entry}\n"
 	
 	await asyncio.to_thread(sys.stdout.write, log_entry)
