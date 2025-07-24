@@ -18,3 +18,7 @@
 ## 2025-07-03
 ### -Added Dockerfile and .dockerignore files.
 ### -Updated [README.md](README.md) to include docker.
+
+## v1.3.1 - 2025-07-24
+### -Included zen event stock.
+### -Fixed weather scraping logic.
