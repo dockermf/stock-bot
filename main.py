@@ -11,7 +11,7 @@ import psutil
 from dotenv import load_dotenv
 
 load_dotenv()
-__version__ = "1.3.1"
+__version__ = "1.3.2"
 
 # Telegram
 bot_token = os.getenv("TELEGRAM_TOKEN")
@@ -28,6 +28,7 @@ channel_ids = {
 	#"cosmetics":None
     "gag-stock":1384416057162203156
 }
+
 
 bot = Bot(token=bot_token)
 
@@ -196,10 +197,12 @@ class discord_client(discord.Client):
 		"Zen Egg":"\u2757",
 		"Hot Spring":"",
 		"Zen Sand":"",
+		"Corrupt Radar":"",
 		"Tranquil Radar":"",
 		"Zenflare":"",
 		"Zen Crate":"",
 		"Soft Sunshine":"",
+		"Sakura Bush":"",
 		"Koi":"\u2757",
 		"Zen Gnome Crate":"",
 		"Spiked Mango":"\u2757",
@@ -337,16 +340,19 @@ async def parse_message(message):
 	else:
 		for embed in message.embeds:
 			if embed.description:
-				lines = embed.description.split("\n")
-				event = lines[0]
-				duration = lines[2]
-				is_worthy = True
-				for ban in event_bans:
-					if ban in event:
-						is_worthy = False
-				if is_worthy:
-					text += event + "\n" + duration + "\n"
-			
+				try:
+					lines = embed.description.split("\n")
+					event = lines[0]
+					duration = lines[2]
+					is_worthy = True
+					for ban in event_bans:
+						if ban in event:
+							is_worthy = False
+					if is_worthy:
+						text += event + "\n" + duration + "\n"
+				except Exception as e:
+					await telegram_send(f"{e}\n@trickymf")
+
 			if embed.fields:
 				for field in embed.fields:
 					type = field.name.strip("*").split()[0]
@@ -362,9 +368,13 @@ async def parse_message(message):
 						
 						amount = line.split()[-1]
 						# Check if the item is wanted by the user.
-						if prefs[name] != "":
-							is_worthy = True
-							items[name] = amount
+						try:
+							if prefs[name] != "":
+								is_worthy = True
+								items[name] = amount
+						except KeyError:
+							await telegram_send(f"{name} was not found. Make sure item list is updated!\n@trickymf")
+							continue
 					
 					if is_worthy:
 						text += f"{prefs[type]} **{type} STOCK** {prefs[type]}" + "\n"
