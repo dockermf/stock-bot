@@ -271,21 +271,21 @@ async def change_prefs(text):
 					await discord_send(f"{event} -> on")
 					return
 			if not found:
-				await discord_send(f"{event_input.lower()} is already enabled.")
+				await discord_send(f"{event_input.lower()} is already enabled")
 
 		elif action.lower() == "off":
 			for event in all_events:
 				if event.lower() == event_input.lower():
 					for ban in event_bans:
 						if ban.lower() == event_input.lower():
-							await discord_send(f"{ban} is already disabled.")
+							await discord_send(f"{ban} is already disabled")
 							return
 					
 					event_bans.append(event)
-					await discord_send(f"{event} -> off.")
+					await discord_send(f"{event} -> off")
 					return
 		else:
-			await discord_send(f"{action} has to be on/off.")
+			await discord_send(f"{action} has to be on/off")
 			return
 	
 	elif prefix == "stock":
