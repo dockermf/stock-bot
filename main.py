@@ -271,21 +271,21 @@ async def change_prefs(text):
 					await discord_send(f"{event} -> on")
 					return
 			if not found:
-				await discord_send(f"{event_input.lower()} is already enabled")
+				await discord_send(f"{event_input.lower()} is already enabled.")
 
 		elif action.lower() == "off":
 			for event in all_events:
 				if event.lower() == event_input.lower():
 					for ban in event_bans:
 						if ban.lower() == event_input.lower():
-							await discord_send(f"{ban} is already disabled")
+							await discord_send(f"{ban} is already disabled.")
 							return
 					
 					event_bans.append(event)
-					await discord_send(f"{event} -> off")
+					await discord_send(f"{event} -> off.")
 					return
 		else:
-			await discord_send(f"{action} has to be on/off")
+			await discord_send(f"{action} has to be on/off.")
 			return
 	
 	elif prefix == "stock":
@@ -351,7 +351,7 @@ async def parse_message(message):
 					if is_worthy:
 						text += event + "\n" + duration + "\n"
 				except Exception as e:
-					await telegram_send(f"{e}\n@trickymf")
+					await discord_send(e)
 
 			if embed.fields:
 				for field in embed.fields:
@@ -373,7 +373,7 @@ async def parse_message(message):
 								is_worthy = True
 								items[name] = amount
 						except KeyError:
-							await telegram_send(f"{name} was not found. Make sure item list is updated!\n@trickymf")
+							await discord_send(f"{name} was not found. Make sure item list is updated!")
 							continue
 					
 					if is_worthy:
@@ -407,10 +407,11 @@ async def telegram_send(text):
 		reserved_chars = ["_", "[", "]", "(", ")", "~", "`", ">", "#", "+", "-", "=", "|", "{", "}", ".", "!"]
 		for char in reserved_chars:
 			text = text.replace(char, f"\\{char}")
-		await bot.send_message(chat_id=group_id, text=text, parse_mode="MarkdownV2")
+		await bot.send_message(chat_id=group_id, text=text, parse_mode="MarkdownV2", pool_timeout=15.0)
 		await log("telegram_send(): sent")
 	except Exception as e:
 		await log(f"telegram_send(): {e}", 1)
+		await discord_send(e)
 
 async def main():
 	loop = asyncio.get_event_loop()
