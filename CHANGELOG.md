@@ -22,3 +22,6 @@
 ## v1.3.1 - 2025-07-24
 ### -Included zen event stock.
 ### -Fixed weather scraping logic.
+
+## v1.3.2 - 2025-07-26
+### -Fixed unknown/new items not being handled (silent errors) by the bot.
