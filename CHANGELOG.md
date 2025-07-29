@@ -27,3 +27,7 @@
 ### -Fixed unknown/new items not being handled (silent errors) by the bot.
 ### -Fixed pool timeout issue when sending too many messages at once to telegram.
 ### -Made it send errors to discord instead of logging them.
+
+## v1.3.3 - 2025-07-29
+### -Added new items to the stock item list.
+### -Changed the way stock titles are parsed a bit.

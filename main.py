@@ -11,7 +11,7 @@ import psutil
 from dotenv import load_dotenv
 
 load_dotenv()
-__version__ = "1.3.2"
+__version__ = "1.3.3"
 
 # Telegram
 bot_token = os.getenv("TELEGRAM_TOKEN")
@@ -101,32 +101,23 @@ class discord_client(discord.Client):
 		"Blueberry":"",
 		"Pumpkin":"",
 		"Watermelon":"",
-		"Rafflesia":"",
-		"Green Apple":"",
-		"Avocado":"",
-		"Banana":"",
-		"Pineapple":"",
-		"Kiwi":"",
-		"Bell Pepper":"",
-		"Prickly Pear":"",
-		"Feijoa":"\u2757",
-		"Loquat":"\u2757",
 		"Bamboo":"",
 		"Corn":"",
 		"Coconut":"",
 		"Cactus":"",
 		"Dragon Fruit":"",
-		"Mango":"\u2757", # \u2757 => ❗
+		"Mango":"",
 		"Grape":"",
-		"Mushroom":"\u2757",
-		"Pepper":"\u2757",
-		"Cacao":"\u2757",
+		"Mushroom":"\u2757", # \u2757 => ❗
+		"Pepper":"",
+		"Cacao":"",
 		"Beanstalk":"\u2757",
 		"Ember Lily":"\u2757",
 		"Pitcher Plant":"\u2757",
 		"Sugar Apple":"\u2757",	
         "Burning Bud":"\u2757",
         "Giant Pinecone":"\u2757",
+		"Elderly Strawberry":"\u2757",
 		
 		"GEAR":"\U0001F6E0", # \U0001F6E0 => 🛠
 		"Trowel":"",
@@ -137,14 +128,14 @@ class discord_client(discord.Client):
 		"Advanced Sprinkler":"",
         "Medium Toy":"\u2757",
         "Medium Treat":"\u2757",
-		"Godly Sprinkler":"\u2757",
+		"Godly Sprinkler":"",
         "Magnifying Glass":"",
 		"Tanning Mirror":"\u2757",
 		"Master Sprinkler":"\u2757",
         "Cleaning Spray":"",
 		"Favorite Tool":"",
 		"Harvest Tool":"",
-		"Friendship Pot":"\u2757",
+		"Friendship Pot":"",
         "Levelup Lollipop":"\u2757",
 	
 		"EGG":"\U0001F95A", # \U0001F95A => 🥚
@@ -156,15 +147,10 @@ class discord_client(discord.Client):
 		"Legendary Egg":"\u2757",
 		"Mythical Egg":"\u2757",
 		"Paradise Egg":"\u2757",
-		"Bee Egg":"\u2757",
 		"Bug Egg":"\u2757",
 		
 		# Bizzy bee event
 		#"HONEY":"\U0001F36F", # \U0001F36F => honey pot emoji
-		#"Flower Seed Pack":"\u2757",
-		#"Honey Sprinkler":"\u2757",
-		#"Bee Crate":"",
-		#"Bee Egg":"\u2757",
 		#"Nectarine":"\u2757",
 		#"Hive Fruit":"\u2757",
 		#"Honeysuckle":"\u2757",
@@ -179,7 +165,7 @@ class discord_client(discord.Client):
 		#"Honey Torch":"",
 		#"Bee Chair":"",
 		#"Honey Walkway":""
-
+        
 		# Summer harvest event
 		#"EVENT":"\U00002600", # \U00002600 => ☀️
 		#"Summer Seed Pack":"\u2757",
@@ -197,8 +183,8 @@ class discord_client(discord.Client):
 		"Zen Egg":"\u2757",
 		"Hot Spring":"",
 		"Zen Sand":"",
-		"Corrupt Radar":"",
 		"Tranquil Radar":"",
+		"Corrupt Radar":"",
 		"Zenflare":"",
 		"Zen Crate":"",
 		"Soft Sunshine":"",
@@ -206,8 +192,44 @@ class discord_client(discord.Client):
 		"Koi":"\u2757",
 		"Zen Gnome Crate":"",
 		"Spiked Mango":"\u2757",
-		"Pet Shard Tranquil":"\u2757"
-
+		"Pet Shard Tranquil":"\u2757",
+		"Pet Shard Corrupted":"\u2757",
+		"Raiju":"\u2757",
+		
+        "TRAVELING MERCHANT":"",
+		# Gnome Merchant
+		"Common Gnome Crate":"",
+		"Farmers Gnome Crate":"",
+		"Classic Gnome Crate":"",
+		"Iconic Gnome Crate":"",
+		# Spray Merchant
+		"Mutation Spray Wet":"",
+		"Mutation Spray Windstruck":"",
+		"Mutation Spray Verdant":"\u2757",
+		# Sky Merchant
+		"Night Staff":"",
+		"Star Caller":"\u2757",
+		"Mutation Spray Cloudtouched":"\u2757",
+		# Honey Merchant
+		"Flower Seed Pack":"\u2757",
+		"Honey Sprinkler":"\u2757",
+		"Bee Egg":"\u2757",
+		"Bee Crate":"",
+		"Honey Crafters Crate":"",
+		# Summer Merchant
+		"Cauliflower":"",
+		"Rafflesia":"",
+		"Green Apple":"",
+		"Avocado":"",
+		"Banana":"",
+		"Pineapple":"",
+		"Kiwi":"",
+		"Bell Pepper":"",
+		"Prickly Pear":"",
+		"Loquat":"\u2757",
+		"Feijoa":"\u2757",
+		"Pitcher Plant":"\u2757"
+		
 		#"COSMETICS":"\U00002728" # \U00002728 => ✨
 	}
 	
@@ -355,7 +377,7 @@ async def parse_message(message):
 
 			if embed.fields:
 				for field in embed.fields:
-					type = field.name.strip("*").split()[0]
+					type = field.name.strip("*").split()[:-1]
 					items = {}
 					is_worthy = False
 
