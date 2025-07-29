@@ -377,7 +377,7 @@ async def parse_message(message):
 
 			if embed.fields:
 				for field in embed.fields:
-					type = field.name.strip("*").split()[:-1]
+					type = " ".join(field.name.strip("*").split()[:-1])
 					items = {}
 					is_worthy = False
 
