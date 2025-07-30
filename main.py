@@ -117,7 +117,7 @@ class discord_client(discord.Client):
 		"Sugar Apple":"\u2757",	
         "Burning Bud":"\u2757",
         "Giant Pinecone":"\u2757",
-		"Elderly Strawberry":"\u2757",
+		"Elder Strawberry":"\u2757",
 		
 		"GEAR":"\U0001F6E0", # \U0001F6E0 => 🛠
 		"Trowel":"",
@@ -337,7 +337,7 @@ async def change_prefs(text):
 					await discord_send(f"{action} has to be on/off")
 					return
 		
-		exclude = ["event_bans", "all_events", "SEEDS", "GEAR", "EGG"]
+		exclude = ["event_bans", "all_events", "SEEDS", "GEAR", "EGG", "TRAVELING MERCHANT", "EVENT"]
 		await discord_send(f"{item_input} is invalid.\nItems: {[x for x in prefs if x not in exclude]}")
 	
 	elif prefix == "channel":
