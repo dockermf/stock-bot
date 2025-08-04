@@ -31,3 +31,6 @@
 ## v1.3.3 - 2025-07-29
 ### -Added new items to the stock item list.
 ### -Changed the way stock titles are parsed a bit + fixed parsing issue.
+
+## v1.3.4 - 2025-08-04
+### -Updated items list (weather, gear).

@@ -11,7 +11,7 @@ import psutil
 from dotenv import load_dotenv
 
 load_dotenv()
-__version__ = "1.3.3"
+__version__ = "1.3.4"
 
 # Telegram
 bot_token = os.getenv("TELEGRAM_TOKEN")
@@ -71,24 +71,36 @@ class discord_client(discord.Client):
 		"event_bans":[
 			"Rain",
 			"Frost",
-			"Windy"
+			"Windy",
+			"Heatwave",
+			"Sand Storm"
 		],
 		"all_events":[
 			"Rain",
 			"Frost",
 			"Windy",
-			"Thunder",
+			"Thunderstorm",
 			"Tornado",
 			"Heatwave",
 			"Night",
-			"Blood",
-			"Meteor",
+			"Blood Moon",
+			"Meteor Shower",
 			"Disco",
 			"Jandelstorm",
 			"Blackhole",
 			"Volcano",
 			"Chocolate",
-			"Aurora"
+			"Aurora",
+			"Sand Storm",
+			"Gale",
+			"JandelStorm",
+			"Crystal Beams",
+			"Pool Party",
+			"DJ Jhai",
+			"Djsandstorm",
+			"JandelFloat",
+			"Under The Sea",
+			"Obby"
 		],
 		"SEEDS":"\U0001F331", # \U0001F331 => 🌱
 		"Carrot":"",
@@ -123,6 +135,7 @@ class discord_client(discord.Client):
 		"Trowel":"",
         #"Lightning Rod":"\u2757",
 		"Watering Can":"",
+		"Trading Ticket":"\u2757",
 		"Recall Wrench":"",
 		"Basic Sprinkler":"",
 		"Advanced Sprinkler":"",
@@ -132,6 +145,7 @@ class discord_client(discord.Client):
         "Magnifying Glass":"",
 		"Tanning Mirror":"\u2757",
 		"Master Sprinkler":"\u2757",
+		"Grandmaster Sprinkler":"\u2757",
         "Cleaning Spray":"",
 		"Favorite Tool":"",
 		"Harvest Tool":"",
@@ -178,23 +192,23 @@ class discord_client(discord.Client):
 		#"Hamster":"\u2757"
 		
 		# Zen event
-		"EVENT":"\U0000262F", # \U0000262F => ☯
-		"Zen Seed Pack":"\u2757",
-		"Zen Egg":"\u2757",
-		"Hot Spring":"",
-		"Zen Sand":"",
-		"Tranquil Radar":"",
-		"Corrupt Radar":"",
-		"Zenflare":"",
-		"Zen Crate":"",
-		"Soft Sunshine":"",
-		"Sakura Bush":"",
-		"Koi":"\u2757",
-		"Zen Gnome Crate":"",
-		"Spiked Mango":"\u2757",
-		"Pet Shard Tranquil":"\u2757",
-		"Pet Shard Corrupted":"\u2757",
-		"Raiju":"\u2757",
+		#"EVENT":"\U0000262F", # \U0000262F => ☯
+		#"Zen Seed Pack":"\u2757",
+		#"Zen Egg":"\u2757",
+		#"Hot Spring":"",
+		#"Zen Sand":"",
+		#"Tranquil Radar":"",
+		#"Corrupt Radar":"",
+		#"Zenflare":"",
+		#"Zen Crate":"",
+		#"Soft Sunshine":"",
+		#"Sakura Bush":"",
+		#"Koi":"\u2757",
+		#"Zen Gnome Crate":"",
+		#"Spiked Mango":"\u2757",
+		#"Pet Shard Tranquil":"\u2757",
+		#"Pet Shard Corrupted":"\u2757",
+		#"Raiju":"\u2757",
 		
         "TRAVELING MERCHANT":"",
 		# Gnome Merchant
