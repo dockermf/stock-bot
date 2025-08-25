@@ -11,7 +11,7 @@ import psutil
 from dotenv import load_dotenv
 
 load_dotenv()
-__version__ = "1.3.4"
+__version__ = "1.3.5"
 
 # Telegram
 bot_token = os.getenv("TELEGRAM_TOKEN")
@@ -73,7 +73,8 @@ class discord_client(discord.Client):
 			"Frost",
 			"Windy",
 			"Heatwave",
-			"Sand Storm"
+			"Sand Storm",
+			"Solar Eclipse"
 		],
 		"all_events":[
 			"Rain",
@@ -100,7 +101,14 @@ class discord_client(discord.Client):
 			"Djsandstorm",
 			"JandelFloat",
 			"Under The Sea",
-			"Obby"
+			"Obby",
+			"Solar Eclipse",
+			"Space Travel",
+			"Jandel Zombie",
+			"Alien Invasion",
+			"Stoplight",
+			"Armageddon",
+			"Jandelkatana"
 		],
 		"SEEDS":"\U0001F331", # \U0001F331 => 🌱
 		"Carrot":"",
@@ -120,16 +128,16 @@ class discord_client(discord.Client):
 		"Dragon Fruit":"",
 		"Mango":"",
 		"Grape":"",
-		"Mushroom":"\u2757", # \u2757 => ❗
+		"Mushroom":"",
 		"Pepper":"",
 		"Cacao":"",
-		"Beanstalk":"\u2757",
-		"Ember Lily":"\u2757",
-		"Pitcher Plant":"\u2757",
-		"Sugar Apple":"\u2757",	
-        "Burning Bud":"\u2757",
-        "Giant Pinecone":"\u2757",
+		"Beanstalk":"",
+		"Ember Lily":"",
+		"Sugar Apple":"",	
+        "Burning Bud":"",
+        "Giant Pinecone":"\u2757", # \u2757 => ❗
 		"Elder Strawberry":"\u2757",
+		"Romanesco":"\u2757",
 		
 		"GEAR":"\U0001F6E0", # \U0001F6E0 => 🛠
 		"Trowel":"",
@@ -147,6 +155,7 @@ class discord_client(discord.Client):
 		"Master Sprinkler":"\u2757",
 		"Grandmaster Sprinkler":"\u2757",
         "Cleaning Spray":"",
+		"Cleansing Pet Shard":"",
 		"Favorite Tool":"",
 		"Harvest Tool":"",
 		"Friendship Pot":"",
@@ -240,9 +249,16 @@ class discord_client(discord.Client):
 		"Kiwi":"",
 		"Bell Pepper":"",
 		"Prickly Pear":"",
-		"Loquat":"\u2757",
-		"Feijoa":"\u2757",
-		"Pitcher Plant":"\u2757"
+		"Loquat":"",
+		"Feijoa":"",
+		"Pitcher Plant":"\u2757",
+		# Sprinkler Merchant
+		"Tropical Mist Sprinkler":"",
+		"Berry Blusher Sprinkler":"",
+		"Spice Spritzer Sprinkler":"",
+		"Sweet Soaker Sprinkler":"",
+		"Flower Froster Sprinkler":"",
+		"Stalk Sprout Sprinkler":"",
 		
 		#"COSMETICS":"\U00002728" # \U00002728 => ✨
 	}
