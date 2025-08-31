@@ -37,3 +37,6 @@
 
 ## v1.3.5 - 2025-08-25
 ### -Updated items list (added a bunch of new stuff from the update).
+
+## v1.3.6 - 2025-08-31
+### -Updated items list (added a bunch of new stuff from the update).
