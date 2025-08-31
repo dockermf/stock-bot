@@ -11,7 +11,7 @@ import psutil
 from dotenv import load_dotenv
 
 load_dotenv()
-__version__ = "1.3.5"
+__version__ = "1.3.6"
 
 # Telegram
 bot_token = os.getenv("TELEGRAM_TOKEN")
