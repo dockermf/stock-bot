@@ -74,7 +74,14 @@ class discord_client(discord.Client):
 			"Windy",
 			"Heatwave",
 			"Sand Storm",
-			"Solar Eclipse"
+			"Solar Eclipse",
+			"Tornado",
+			"Night",
+			"Blood Moon",
+			"Thunderstorm",
+			"Gale",
+			"Aurora",
+			"Crystal Beams"
 		],
 		"all_events":[
 			"Rain",

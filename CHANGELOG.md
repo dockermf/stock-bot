@@ -40,3 +40,6 @@
 
 ## v1.3.6 - 2025-08-31
 ### -Updated items list (added a bunch of new stuff from the update).
+
+## 2025-09-04
+### -Added a bunch of weather items in the ban list.
