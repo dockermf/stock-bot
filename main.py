@@ -11,7 +11,7 @@ import psutil
 from dotenv import load_dotenv
 
 load_dotenv()
-__version__ = "1.3.6"
+__version__ = "1.3.7"
 
 # Telegram
 bot_token = os.getenv("TELEGRAM_TOKEN")
@@ -182,6 +182,7 @@ class discord_client(discord.Client):
 		"Mythical Egg":"\u2757",
 		"Paradise Egg":"\u2757",
 		"Bug Egg":"\u2757",
+		"Pet Lead":"",
 		
 		# Bizzy bee event
 		#"HONEY":"\U0001F36F", # \U0001F36F => honey pot emoji

@@ -43,3 +43,6 @@
 
 ## 2025-09-04
 ### -Added a bunch of weather items in the ban list.
+
+## v1.3.7 2025-09-14
+### -Added new item from the egg shop.
