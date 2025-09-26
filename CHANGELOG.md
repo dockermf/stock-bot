@@ -46,3 +46,6 @@
 
 ## v1.3.7 2025-09-14
 ### -Added new item from the egg shop.
+
+## v1.3.8 to v1.3.9 2025-09-26
+### -Added new item from gear(?) shop.

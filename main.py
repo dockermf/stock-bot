@@ -11,13 +11,13 @@ import psutil
 from dotenv import load_dotenv
 
 load_dotenv()
-__version__ = "1.3.7"
+__version__ = "1.3.9"
 
 # Telegram
 bot_token = os.getenv("TELEGRAM_TOKEN")
 group_id = os.getenv("TELEGRAM_GROUP_ID")
 
-users = ["trickymf", "tommy_nalichkareal"]
+users = ["trickymf"]
 
 channel_ids = {
 	#"honey":1376526834774052966, # honey shop
@@ -81,7 +81,8 @@ class discord_client(discord.Client):
 			"Thunderstorm",
 			"Gale",
 			"Aurora",
-			"Crystal Beams"
+			"Crystal Beams",
+			"Earthquake"
 		],
 		"all_events":[
 			"Rain",
@@ -89,6 +90,7 @@ class discord_client(discord.Client):
 			"Windy",
 			"Thunderstorm",
 			"Tornado",
+			"Earthquake",
 			"Heatwave",
 			"Night",
 			"Blood Moon",
@@ -170,6 +172,7 @@ class discord_client(discord.Client):
 		"Favorite Tool":"",
 		"Harvest Tool":"",
 		"Friendship Pot":"",
+		"Pet Name Reroller":"",
         "Levelup Lollipop":"\u2757",
 	
 		"EGG":"\U0001F95A", # \U0001F95A => 🥚
@@ -178,7 +181,7 @@ class discord_client(discord.Client):
 		"Uncommon Egg":"",
 		"Rare Egg":"",
 		"Rare Summer Egg":"\u2757",
-		"Legendary Egg":"\u2757",
+		"Legendary Egg":"",
 		"Mythical Egg":"\u2757",
 		"Paradise Egg":"\u2757",
 		"Bug Egg":"\u2757",
