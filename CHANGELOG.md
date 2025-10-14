@@ -49,3 +49,6 @@
 
 ## v1.3.8 to v1.3.9 2025-09-26
 ### -Added new item from gear(?) shop.
+
+## v1.3.10 2025-10-14
+### -Updated items list.

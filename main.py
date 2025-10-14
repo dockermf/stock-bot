@@ -4,14 +4,14 @@ import ctypes
 import gc
 import asyncio
 import threading
-from telegram import Bot
-import discord
 from datetime import datetime
 import psutil
+from telegram import Bot
+import discord
 from dotenv import load_dotenv
 
 load_dotenv()
-__version__ = "1.3.9"
+__version__ = "1.3.10"
 
 # Telegram
 bot_token = os.getenv("TELEGRAM_TOKEN")
@@ -70,7 +70,7 @@ class discord_client(discord.Client):
 	prefs = {
 		"event_bans":[
 			"Rain",
-			"Frost",
+			"Snow",
 			"Windy",
 			"Heatwave",
 			"Sand Storm",
@@ -82,11 +82,12 @@ class discord_client(discord.Client):
 			"Gale",
 			"Aurora",
 			"Crystal Beams",
-			"Earthquake"
-		],
+			"Earthquake",
+			"Meteor Shower"
+	    ],
 		"all_events":[
 			"Rain",
-			"Frost",
+            "Snow",
 			"Windy",
 			"Thunderstorm",
 			"Tornado",
@@ -148,9 +149,10 @@ class discord_client(discord.Client):
 		"Ember Lily":"",
 		"Sugar Apple":"",	
         "Burning Bud":"",
-        "Giant Pinecone":"\u2757", # \u2757 => ❗
-		"Elder Strawberry":"\u2757",
-		"Romanesco":"\u2757",
+        "Giant Pinecone":"", # \u2757 => ❗
+		"Elder Strawberry":"",
+		"Romanesco":"",
+        "Crimson Thorn":"",
 		
 		"GEAR":"\U0001F6E0", # \U0001F6E0 => 🛠
 		"Trowel":"",
@@ -166,7 +168,7 @@ class discord_client(discord.Client):
         "Magnifying Glass":"",
 		"Tanning Mirror":"",
 		"Master Sprinkler":"",
-		"Grandmaster Sprinkler":"\u2757",
+		"Grandmaster Sprinkler":"",
         "Cleaning Spray":"",
 		"Cleansing Pet Shard":"",
 		"Favorite Tool":"",
@@ -182,9 +184,10 @@ class discord_client(discord.Client):
 		"Rare Egg":"",
 		"Rare Summer Egg":"\u2757",
 		"Legendary Egg":"",
-		"Mythical Egg":"\u2757",
+		"Mythical Egg":"",
 		"Paradise Egg":"\u2757",
 		"Bug Egg":"\u2757",
+		"Jungle Egg":"\u2757",
 		"Pet Lead":"",
 		
 		# Bizzy bee event
@@ -274,6 +277,21 @@ class discord_client(discord.Client):
 		"Sweet Soaker Sprinkler":"",
 		"Flower Froster Sprinkler":"",
 		"Stalk Sprout Sprinkler":"",
+        # Fall Merchant
+        "Rake":"",
+        "Maple Crate":"",
+        "Fall Crate":"",
+        "Fall Egg":"",
+        "Fall Seed Pack":"",
+        "Chipmunk":"",
+        "Space Squirrel":"",
+        "Red Panda":"",
+        "Kniphofia":"",
+        "Maple Resin":"",
+        "Bonfire":"",
+        "Harvest Basket":"",
+        "Super Lead Blower":"",
+        "Fall Fountain":"",
 		
 		#"COSMETICS":"\U00002728" # \U00002728 => ✨
 	}
