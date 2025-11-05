@@ -11,7 +11,7 @@ import discord
 from dotenv import load_dotenv
 
 load_dotenv()
-__version__ = "1.3.10"
+__version__ = "1.3.11"
 
 # Telegram
 bot_token = os.getenv("TELEGRAM_TOKEN")
@@ -70,6 +70,10 @@ class discord_client(discord.Client):
 	prefs = {
 		"event_bans":[
 			"Rain",
+            "Safarirain",
+            "Safaridrought",
+            "Safarinight",
+            "Safarioasis",
 			"Snow",
 			"Windy",
 			"Heatwave",
@@ -87,6 +91,10 @@ class discord_client(discord.Client):
 	    ],
 		"all_events":[
 			"Rain",
+            "Safarirain",
+            "Safaridrought",
+            "Safarinight",
+            "Safarioasis",
             "Snow",
 			"Windy",
 			"Thunderstorm",
@@ -153,6 +161,7 @@ class discord_client(discord.Client):
 		"Elder Strawberry":"",
 		"Romanesco":"",
         "Crimson Thorn":"",
+        "Trinity Fruit":"",
 		
 		"GEAR":"\U0001F6E0", # \U0001F6E0 => 🛠
 		"Trowel":"",
@@ -175,6 +184,7 @@ class discord_client(discord.Client):
 		"Harvest Tool":"",
 		"Friendship Pot":"",
 		"Pet Name Reroller":"",
+        "Buttercup":"",
         "Levelup Lollipop":"\u2757",
 	
 		"EGG":"\U0001F95A", # \U0001F95A => 🥚
@@ -290,7 +300,7 @@ class discord_client(discord.Client):
         "Maple Resin":"",
         "Bonfire":"",
         "Harvest Basket":"",
-        "Super Lead Blower":"",
+        "Super Leaf Blower":"",
         "Fall Fountain":"",
 		
 		#"COSMETICS":"\U00002728" # \U00002728 => ✨
